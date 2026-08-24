@@ -12,13 +12,19 @@ const Services = () => (
     <section className="section container">
       <div className="service-grid">
         {services.map((service, index) => (
-          <article className="card service-card" key={service.title}>
+          <article className="card reveal-card service-card" key={service.title} tabIndex={0}>
             <span className="card-index">{String(index + 1).padStart(2, "0")} / {service.category}</span>
             <h3>{service.title}</h3>
-            <p>{service.description}</p>
-            <ul className="capability-list">
-              {service.items.slice(0, 4).map((item) => <li key={item}>{item}</li>)}
-            </ul>
+            <div className="card-preview" aria-hidden="true">
+              <p>{service.description}</p>
+              <span className="reveal-prompt">Explore details <span aria-hidden="true">+</span></span>
+            </div>
+            <div className="card-details">
+              <p>{service.description}</p>
+              <ul className="capability-list">
+                {service.items.slice(0, 4).map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
           </article>
         ))}
       </div>

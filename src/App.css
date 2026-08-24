@@ -577,22 +577,100 @@ main,
 }
 
 .service-card {
-  min-height: 410px;
+  height: 350px;
   display: flex;
   flex-direction: column;
 }
 
-.service-card .capability-list {
-  margin-top: auto;
-  padding-top: 28px;
-}
-
 .industry-card {
-  min-height: 330px;
+  height: 320px;
 }
 
 .industry-card .card-index {
   margin-bottom: 34px;
+}
+
+.reveal-card {
+  isolation: isolate;
+  outline: none;
+  cursor: default;
+}
+
+.reveal-card:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(141, 245, 197, 0.14);
+}
+
+.card-preview {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-preview p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.reveal-prompt {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal-prompt span {
+  font-size: 1rem;
+  transition: transform 220ms ease;
+}
+
+.card-details {
+  position: absolute;
+  z-index: 2;
+  inset: 112px 0 0;
+  padding: 18px 28px 28px;
+  overflow-y: auto;
+  border-top: 1px solid rgba(141, 245, 197, 0.16);
+  background: linear-gradient(180deg, rgba(13, 20, 22, 0.98), rgba(9, 13, 17, 0.99));
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 220ms ease;
+  scrollbar-color: rgba(141, 245, 197, 0.42) transparent;
+  scrollbar-width: thin;
+}
+
+.card-details::-webkit-scrollbar {
+  width: 5px;
+}
+
+.card-details::-webkit-scrollbar-thumb {
+  border-radius: 99px;
+  background: rgba(141, 245, 197, 0.42);
+}
+
+.reveal-card:hover .card-details,
+.reveal-card:focus .card-details,
+.reveal-card:focus-within .card-details {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.reveal-card:hover .reveal-prompt span,
+.reveal-card:focus .reveal-prompt span,
+.reveal-card:focus-within .reveal-prompt span {
+  transform: rotate(45deg);
+}
+
+.card-details .capability-list {
+  margin-top: 18px;
 }
 
 .product-card {
