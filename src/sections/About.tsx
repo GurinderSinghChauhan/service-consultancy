@@ -1,4 +1,5 @@
 import PageIntro from "../components/PageIntro";
+import RevealCardBody from "../components/RevealCardBody";
 
 const values = [
   { icon: "01", title: "Think in outcomes", copy: "We anchor decisions in the change they need to create—not deliverables for their own sake." },
@@ -29,10 +30,10 @@ const About = () => (
       </div>
       <div className="value-grid">
         {values.map((value) => (
-          <article className="card value-card" key={value.title}>
+          <article className="card reveal-card value-card" key={value.title} tabIndex={0}>
             <span className="value-icon">{value.icon}</span>
             <h3>{value.title}</h3>
-            <p>{value.copy}</p>
+            <RevealCardBody summary={value.copy} />
           </article>
         ))}
       </div>

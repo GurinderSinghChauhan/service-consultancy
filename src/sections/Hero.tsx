@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { industriesData, services } from "../assets/mockData/mockData";
+import RevealCardBody from "../components/RevealCardBody";
 
 const process = [
   { title: "Discover", copy: "Align on the opportunity, constraints, users, and measurable outcomes." },
@@ -55,11 +56,15 @@ const Hero = () => (
       </div>
       <div className="service-grid">
         {services.slice(0, 6).map((service, index) => (
-          <article className="card" key={service.title}>
+          <article className="card reveal-card home-service-card" key={service.title} tabIndex={0}>
             <span className="card-index">0{index + 1}</span>
             <span className="card-arrow" aria-hidden="true">↗</span>
             <h3>{service.title}</h3>
-            <p>{service.description}</p>
+            <RevealCardBody summary={service.description}>
+              <ul className="capability-list">
+                {service.items.slice(0, 3).map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </RevealCardBody>
           </article>
         ))}
       </div>

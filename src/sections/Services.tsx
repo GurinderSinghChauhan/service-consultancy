@@ -1,5 +1,6 @@
 import { services } from "../assets/mockData/mockData";
 import PageIntro from "../components/PageIntro";
+import RevealCardBody from "../components/RevealCardBody";
 
 const Services = () => (
   <>
@@ -15,16 +16,11 @@ const Services = () => (
           <article className="card reveal-card service-card" key={service.title} tabIndex={0}>
             <span className="card-index">{String(index + 1).padStart(2, "0")} / {service.category}</span>
             <h3>{service.title}</h3>
-            <div className="card-preview" aria-hidden="true">
-              <p>{service.description}</p>
-              <span className="reveal-prompt">Explore details <span aria-hidden="true">+</span></span>
-            </div>
-            <div className="card-details">
-              <p>{service.description}</p>
+            <RevealCardBody summary={service.description}>
               <ul className="capability-list">
                 {service.items.slice(0, 4).map((item) => <li key={item}>{item}</li>)}
               </ul>
-            </div>
+            </RevealCardBody>
           </article>
         ))}
       </div>

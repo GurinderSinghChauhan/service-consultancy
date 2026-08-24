@@ -592,6 +592,8 @@ main,
 
 .reveal-card {
   isolation: isolate;
+  display: flex;
+  flex-direction: column;
   outline: none;
   cursor: default;
 }
@@ -599,6 +601,12 @@ main,
 .reveal-card:focus-visible {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(141, 245, 197, 0.14);
+}
+
+.card-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
 }
 
 .card-preview {
@@ -633,7 +641,7 @@ main,
 .card-details {
   position: absolute;
   z-index: 2;
-  inset: 112px 0 0;
+  inset: 0 -28px -28px;
   padding: 18px 28px 28px;
   overflow-y: auto;
   border-top: 1px solid rgba(141, 245, 197, 0.16);
@@ -674,14 +682,7 @@ main,
 }
 
 .product-card {
-  min-height: 350px;
-  display: flex;
-  flex-direction: column;
-}
-
-.product-card .tag-list {
-  margin-top: auto;
-  padding-top: 30px;
+  height: 350px;
 }
 
 .product-card.featured {
@@ -698,14 +699,7 @@ main,
 }
 
 .insight-card {
-  min-height: 360px;
-  display: flex;
-  flex-direction: column;
-}
-
-.insight-card p:last-child {
-  margin-top: auto;
-  padding-top: 24px;
+  height: 360px;
 }
 
 .insight-type {
@@ -740,7 +734,11 @@ main,
 }
 
 .value-card {
-  min-height: 260px;
+  height: 300px;
+}
+
+.home-service-card {
+  height: 320px;
 }
 
 .value-icon {

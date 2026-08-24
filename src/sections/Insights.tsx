@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { insightsData } from "../assets/mockData/mockData";
 import PageIntro from "../components/PageIntro";
+import RevealCardBody from "../components/RevealCardBody";
 
 const categories = ["All", "Blogs", "Case Studies"];
 
@@ -35,10 +36,10 @@ const Insights = () => {
         </div>
         <div className="insight-grid">
           {insights.map((insight, index) => (
-            <article className="card insight-card" key={`${insight.title}-${insight.description}`}>
+            <article className="card reveal-card insight-card" key={`${insight.title}-${insight.description}`} tabIndex={0}>
               <span className="insight-type">{insight.title} · {String(index + 1).padStart(2, "0")}</span>
               <h3>{insight.description}</h3>
-              <p>{insight.content}</p>
+              <RevealCardBody summary={insight.content} />
             </article>
           ))}
         </div>
