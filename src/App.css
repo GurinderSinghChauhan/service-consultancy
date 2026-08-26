@@ -402,6 +402,7 @@ main,
 .value-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
   gap: 14px;
 }
 
@@ -577,13 +578,13 @@ main,
 }
 
 .service-card {
-  height: 350px;
+  min-height: 350px;
   display: flex;
   flex-direction: column;
 }
 
 .industry-card {
-  height: 320px;
+  min-height: 320px;
 }
 
 .industry-card .card-index {
@@ -610,8 +611,13 @@ main,
 }
 
 .card-preview {
+  max-height: 150px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  opacity: 1;
+  transform: translateY(0);
+  transition: max-height 240ms ease, opacity 160ms ease, transform 220ms ease;
 }
 
 .card-preview p {
@@ -639,36 +645,34 @@ main,
 }
 
 .card-details {
-  position: absolute;
-  z-index: 2;
-  inset: 0 -28px -28px;
-  padding: 18px 28px 28px;
-  overflow-y: auto;
-  border-top: 1px solid rgba(141, 245, 197, 0.16);
-  background: linear-gradient(180deg, rgba(13, 20, 22, 0.98), rgba(9, 13, 17, 0.99));
+  max-height: 0;
+  padding-top: 0;
+  overflow: hidden;
+  border-top: 1px solid transparent;
   opacity: 0;
   transform: translateY(14px);
   pointer-events: none;
-  transition: opacity 180ms ease, transform 220ms ease;
-  scrollbar-color: rgba(141, 245, 197, 0.42) transparent;
-  scrollbar-width: thin;
-}
-
-.card-details::-webkit-scrollbar {
-  width: 5px;
-}
-
-.card-details::-webkit-scrollbar-thumb {
-  border-radius: 99px;
-  background: rgba(141, 245, 197, 0.42);
+  transition: max-height 440ms ease, padding-top 220ms ease, border-color 220ms ease, opacity 180ms ease, transform 240ms ease;
 }
 
 .reveal-card:hover .card-details,
 .reveal-card:focus .card-details,
 .reveal-card:focus-within .card-details {
+  max-height: 1200px;
+  padding-top: 18px;
+  border-top-color: rgba(141, 245, 197, 0.16);
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+.reveal-card:hover .card-preview,
+.reveal-card:focus .card-preview,
+.reveal-card:focus-within .card-preview {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
 }
 
 .reveal-card:hover .reveal-prompt span,
@@ -682,7 +686,7 @@ main,
 }
 
 .product-card {
-  height: 350px;
+  min-height: 350px;
 }
 
 .product-card.featured {
@@ -699,7 +703,7 @@ main,
 }
 
 .insight-card {
-  height: 360px;
+  min-height: 360px;
 }
 
 .insight-type {
@@ -734,11 +738,11 @@ main,
 }
 
 .value-card {
-  height: 300px;
+  min-height: 300px;
 }
 
 .home-service-card {
-  height: 320px;
+  min-height: 320px;
 }
 
 .value-icon {
