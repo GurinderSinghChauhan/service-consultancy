@@ -28,11 +28,11 @@ const Contact = () => {
         </div>
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-row">
-            <div className="field"><label htmlFor="name">Name</label><input id="name" name="name" autoComplete="name" required /></div>
-            <div className="field"><label htmlFor="email">Work email</label><input id="email" name="email" type="email" autoComplete="email" required /></div>
+            <div className="field"><label htmlFor="name">Name</label><input id="name" name="name" autoComplete="name" maxLength={100} required /></div>
+            <div className="field"><label htmlFor="email">Work email</label><input id="email" name="email" type="email" autoComplete="email" inputMode="email" maxLength={254} required /></div>
           </div>
-          <div className="field"><label htmlFor="company">Company</label><input id="company" name="company" autoComplete="organization" /></div>
-          <div className="field"><label htmlFor="message">What can we help you build?</label><textarea id="message" name="message" required /></div>
+          <div className="field"><label htmlFor="company">Company</label><input id="company" name="company" autoComplete="organization" maxLength={150} /></div>
+          <div className="field"><label htmlFor="message">What can we help you build?</label><textarea id="message" name="message" minLength={20} maxLength={4000} required /></div>
           <button className="button button-primary" type="submit">Open email draft <span aria-hidden="true">↗</span></button>
           <p className="form-note">Submitting opens your email client with the message ready for your review.</p>
         </form>

@@ -18,7 +18,7 @@ const Products = () => (
             <h3>{product.title}</h3>
             <RevealCardBody summary={product.description}>
               {product.demoUrl && (
-                <a className="product-link" href={product.demoUrl} target="_blank" rel="noreferrer">
+                <a className="product-link" href={product.demoUrl} target="_blank" rel="noopener noreferrer">
                   View live product <span aria-hidden="true">↗</span>
                 </a>
               )}

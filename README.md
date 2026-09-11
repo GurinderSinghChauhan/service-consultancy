@@ -1,25 +1,59 @@
-# consultancy
+# The Software Consulting
 
-The Software Consulting
+Production website for The Software Consulting, built with React, TypeScript,
+Vite, and React Router.
 
-At The Software Consulting, we turn ideas into impactful digital solutions. Whether you’re a startup looking to build from scratch or an enterprise ready to scale, our expert team delivers tailored software, sleek user experiences, and cutting-edge technology to help you stay ahead in a rapidly evolving digital world.
+## Local development
+
+Requirements: Node.js 22 and npm 10 or later.
+
+```bash
+npm ci
+npm run dev
+```
+
+The development server prints its local URL. No environment variables are
+required for the current static site.
+
+## Quality checks
+
+Run the full pre-deployment gate locally:
+
+```bash
+npm run check
+```
+
+This runs ESLint, strict TypeScript checking, and the production build. GitHub
+Actions runs the same gate for pushes to `main` and `dev`, and for pull requests.
+
+## Deployment
+
+The application is configured for Vercel. `vercel.json` provides SPA routing,
+the legacy `/portfolio` redirect, long-lived caching for fingerprinted assets,
+and baseline browser security headers.
+
+Recommended release flow:
+
+1. Open a pull request from `dev` to `main`.
+2. Confirm the Quality workflow and Vercel preview pass.
+3. Merge to `main` and verify the production deployment.
+4. Smoke-test `/`, `/services`, `/products`, `/contact`, and an unknown route.
+
+The contact form intentionally opens the visitor’s email client; it does not
+collect or store personal information on the website.
 
 ## Versioning
 
-The application follows [Semantic Versioning](https://semver.org/) and uses the
-version in `package.json` as its single source of truth. The current version is
-included in production builds and displayed in the site footer.
-
-Create a release with one of these commands:
+The version in `package.json` is displayed in the footer and follows Semantic
+Versioning. Create a release with one of:
 
 ```bash
-npm run release:patch # backwards-compatible bug fix
-npm run release:minor # backwards-compatible feature
-npm run release:major # breaking change
+npm run release:patch
+npm run release:minor
+npm run release:major
 ```
 
-Each command updates `package.json` and `package-lock.json`, creates a release
-commit and Git tag, and runs npm's version lifecycle. Push both afterward:
+Then push the release commit and tag:
 
 ```bash
 git push origin main --follow-tags
