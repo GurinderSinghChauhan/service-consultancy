@@ -43,7 +43,7 @@ const Footer = () => (
 
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} The Software Consulting</span>
-        <span aria-label={`Application version ${__APP_VERSION__}`}>Version {__APP_VERSION__}</span>
+        <span>Strategy · Design · Engineering</span>
       </div>
     </div>
   </footer>

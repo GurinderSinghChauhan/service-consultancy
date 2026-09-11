@@ -42,19 +42,25 @@ Recommended release flow:
 The contact form intentionally opens the visitor’s email client; it does not
 collect or store personal information on the website.
 
-## Versioning
+## Semantic versioning
 
-The version in `package.json` is displayed in the footer and follows Semantic
-Versioning. Create a release with one of:
+Releases follow [Semantic Versioning](https://semver.org/) and are automated by
+Semantic Release when changes reach `main`. Commit messages use the
+[Conventional Commits](https://www.conventionalcommits.org/) format:
+
+- `fix:` creates a patch release.
+- `feat:` creates a minor release.
+- `feat!:` or a `BREAKING CHANGE:` footer creates a major release.
+- `perf:`, `refactor:`, `revert:`, and `docs:` create patch releases.
+- `chore:`, `ci:`, `style:`, and `test:` do not create a release by themselves.
+
+The release workflow validates the application, calculates the next version,
+creates a `vX.Y.Z` Git tag, and publishes generated notes as a GitHub Release.
+Preview the next release locally without writing tags or releases:
 
 ```bash
-npm run release:patch
-npm run release:minor
-npm run release:major
+GITHUB_TOKEN="$(gh auth token)" npm run release:dry-run
 ```
 
-Then push the release commit and tag:
-
-```bash
-git push origin main --follow-tags
-```
+The dry run requires an authenticated GitHub CLI session because it verifies
+repository permissions, but it never creates a tag or release.
