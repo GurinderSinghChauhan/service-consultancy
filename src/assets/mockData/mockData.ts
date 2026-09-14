@@ -636,7 +636,7 @@ export const productsData = [
     title: "Velora Service Marketplace",
     description:
       "A local-services marketplace for discovering trusted professionals, booking live availability, and managing provider operations.",
-    tech: ["React", "FastAPI", "PostgreSQL", "Vercel"],
+    tech: ["React", "FastAPI", "PostgreSQL"],
     demoUrl: "https://velora-demo.thesoftwareconsulting.com",
   },
 ];
