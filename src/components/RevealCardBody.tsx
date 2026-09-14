@@ -12,8 +12,10 @@ const RevealCardBody = ({ children, summary }: RevealCardBodyProps) => (
       <span className="reveal-prompt">Explore details <span aria-hidden="true">+</span></span>
     </div>
     <div className="card-details">
-      <p>{summary}</p>
-      {children}
+      <div className="card-details-inner">
+        <p>{summary}</p>
+        {children}
+      </div>
     </div>
   </div>
 );

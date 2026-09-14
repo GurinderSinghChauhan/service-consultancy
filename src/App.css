@@ -423,6 +423,11 @@ main,
   gap: 14px;
 }
 
+.service-grid,
+.industry-grid {
+  align-items: stretch;
+}
+
 .card {
   position: relative;
   padding: 28px;
@@ -662,20 +667,26 @@ main,
 }
 
 .card-details {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   padding-top: 0;
   overflow: hidden;
   border-top: 1px solid transparent;
   opacity: 0;
   transform: translateY(14px);
   pointer-events: none;
-  transition: max-height 440ms ease, padding-top 220ms ease, border-color 220ms ease, opacity 180ms ease, transform 240ms ease;
+  transition: grid-template-rows 360ms cubic-bezier(0.22, 1, 0.36, 1), padding-top 300ms ease, border-color 220ms ease, opacity 220ms ease, transform 300ms ease;
+}
+
+.card-details-inner {
+  min-height: 0;
+  overflow: hidden;
 }
 
 .reveal-card:hover .card-details,
 .reveal-card:focus .card-details,
 .reveal-card:focus-within .card-details {
-  max-height: 1200px;
+  grid-template-rows: 1fr;
   padding-top: 18px;
   border-top-color: rgba(141, 245, 197, 0.16);
   opacity: 1;
