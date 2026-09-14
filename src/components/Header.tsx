@@ -12,9 +12,36 @@ const navItems = [
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">(() =>
+    document.documentElement.dataset.theme === "light" ? "light" : "dark",
+  );
   const { pathname } = useLocation();
 
   useEffect(() => setMenuOpen(false), [pathname]);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute(
+      "content",
+      theme === "light" ? "#f4f1ea" : "#07090d",
+    );
+  }, [theme]);
+
+  useEffect(() => {
+    const preference = window.matchMedia("(prefers-color-scheme: light)");
+    const followSystemTheme = (event: MediaQueryListEvent) => {
+      if (!localStorage.getItem("site-theme")) setTheme(event.matches ? "light" : "dark");
+    };
+
+    preference.addEventListener("change", followSystemTheme);
+    return () => preference.removeEventListener("change", followSystemTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    localStorage.setItem("site-theme", nextTheme);
+    setTheme(nextTheme);
+  };
 
   return (
     <header className="site-header">
@@ -42,6 +69,19 @@ const Header = () => {
         </nav>
 
         <div className="nav-actions">
+          <button
+            className="theme-toggle"
+            type="button"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+            onClick={toggleTheme}
+          >
+            <span className="theme-toggle-track" aria-hidden="true">
+              <span className="theme-toggle-thumb">
+                {theme === "dark" ? "☾" : "☀"}
+              </span>
+            </span>
+          </button>
           <Link className="button button-small button-primary desktop-cta" to="/contact">
             Start a project <span aria-hidden="true">↗</span>
           </Link>
