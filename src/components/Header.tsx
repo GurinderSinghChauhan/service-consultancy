@@ -83,7 +83,7 @@ const Header = () => {
             </span>
           </button>
           <Link className="button button-small button-primary desktop-cta" to="/contact">
-            Start a project <span aria-hidden="true">↗</span>
+            Contact us <span aria-hidden="true">↗</span>
           </Link>
           <button
             className="menu-toggle"
@@ -110,7 +110,7 @@ const Header = () => {
           </NavLink>
         ))}
         <Link className="button button-primary" to="/contact">
-          Start a project
+          Contact us
         </Link>
       </div>
     </header>

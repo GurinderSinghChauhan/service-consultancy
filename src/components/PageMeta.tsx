@@ -7,7 +7,7 @@ const defaultDescription = "Senior product strategy, design, and engineering for
 const metadata: Record<string, { title: string; description: string }> = {
   "/": { title: "Strategy, Design & Engineering", description: defaultDescription },
   "/about": { title: "About", description: "Meet a senior technology consultancy focused on clear thinking, close collaboration, and accountable delivery." },
-  "/contact": { title: "Start a Project", description: "Talk with The Software Consulting about a new product, modernization initiative, AI opportunity, or technical strategy." },
+  "/contact": { title: "Contact", description: "Talk with The Software Consulting about a new product, modernization initiative, AI opportunity, or technical strategy." },
   "/industries": { title: "Industries", description: "Technology consulting grounded in the operating realities of automotive, banking, healthcare, retail, and more." },
   "/insights": { title: "Insights", description: "Practical perspectives on product, engineering, AI, cloud, and digital business." },
   "/products": { title: "Products & Work", description: "Explore selected digital products shaped around real customer and business needs." },

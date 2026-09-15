@@ -20,7 +20,7 @@ const Hero = () => (
             Strategy, product design, and engineering for teams solving complex problems. Senior thinking from first conversation to production.
           </p>
           <div className="hero-actions">
-            <Link className="button button-primary" to="/contact">Start a project <span aria-hidden="true">↗</span></Link>
+            <Link className="button button-primary" to="/contact">Contact us <span aria-hidden="true">↗</span></Link>
             <Link className="button" to="/products">Explore our work</Link>
           </div>
           <div className="hero-proof" aria-label="Company highlights">

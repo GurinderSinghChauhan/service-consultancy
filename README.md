@@ -39,8 +39,9 @@ Recommended release flow:
 3. Merge to `main` and verify the production deployment.
 4. Smoke-test `/`, `/services`, `/products`, `/contact`, and an unknown route.
 
-The contact form intentionally opens the visitor’s email client; it does not
-collect or store personal information on the website.
+The contact form submits directly to the configured inbox through FormSubmit.
+The recipient must confirm the one-time activation email from FormSubmit before
+messages are delivered. Form submissions are not stored by this website.
 
 ## Semantic versioning
 
