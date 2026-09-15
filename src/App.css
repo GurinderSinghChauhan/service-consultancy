@@ -177,9 +177,12 @@ main,
 }
 
 .brand-copy {
-  display: grid;
-  line-height: 1.03;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  line-height: 1;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .brand-copy strong {
