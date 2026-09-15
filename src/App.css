@@ -839,14 +839,6 @@ main,
   min-height: 350px;
 }
 
-.product-link {
-  margin-top: 24px;
-  display: inline-flex;
-  gap: 8px;
-  color: var(--accent);
-  font-weight: 650;
-}
-
 .insight-card {
   min-height: 360px;
 }

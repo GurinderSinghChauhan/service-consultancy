@@ -17,11 +17,6 @@ const Products = () => (
             <span className="card-index">Project {String(index + 1).padStart(2, "0")}</span>
             <h3>{product.title}</h3>
             <RevealCardBody summary={product.description}>
-              {product.demoUrl && (
-                <a className="product-link" href={product.demoUrl} target="_blank" rel="noopener noreferrer">
-                  View live product <span aria-hidden="true">↗</span>
-                </a>
-              )}
               <div className="tag-list">
                 {product.tech.map((technology) => <span className="tag" key={technology}>{technology}</span>)}
               </div>

@@ -630,13 +630,11 @@ export const productsData = [
     description:
       "Organization-isolated document ingestion and retrieval with role-based access, controlled compute, and source-grounded answers.",
     tech: ["FastAPI", "PostgreSQL", "Qdrant", "Vision AI"],
-    demoUrl: "https://arcline-demo.thesoftwareconsulting.com",
   },
   {
     title: "Velora Service Marketplace",
     description:
       "A local-services marketplace for discovering trusted professionals, booking live availability, and managing provider operations.",
     tech: ["React", "FastAPI", "PostgreSQL"],
-    demoUrl: "https://velora-demo.thesoftwareconsulting.com",
   },
 ];
