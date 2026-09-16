@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from "react";
-import PageIntro from "../components/PageIntro";
 
 type SubmissionState = "idle" | "sending" | "sent" | "error";
 
@@ -34,14 +33,12 @@ const Contact = () => {
   };
 
   return (
-    <>
-      <PageIntro
-        eyebrow="Start a conversation"
-        title="Tell us what you’re working on."
-        description="Share the challenge, the opportunity, or simply where you need momentum. We’ll respond with a clear next step."
-        meta="Replies within 1–2 business days"
-      />
-      <section className="section container contact-grid">
+      <section className="section container contact-grid contact-page">
+        <div className="contact-intro">
+          <span className="eyebrow">Contact us</span>
+          <h1>Tell us what you’re working on.</h1>
+          <p>Replies within 1–2 business days.</p>
+        </div>
         <div className="contact-details">
           <div className="contact-detail"><span>Email</span><a href="mailto:gschauhan1991@gmail.com">gschauhan1991@gmail.com</a></div>
           <div className="contact-detail"><span>Phone</span><a href="tel:+13102591394">+1 310 259 1394</a></div>
@@ -71,7 +68,6 @@ const Contact = () => {
           </p>
         </form>
       </section>
-    </>
   );
 };
 

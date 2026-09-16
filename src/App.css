@@ -901,6 +901,39 @@ main,
   gap: 12px;
 }
 
+.contact-page {
+  min-height: 100vh;
+  padding-top: 160px;
+  align-items: start;
+  grid-template-areas:
+    "intro form"
+    "details form";
+  grid-template-rows: auto 1fr;
+  row-gap: 28px;
+}
+
+.contact-intro {
+  grid-area: intro;
+}
+
+.contact-page .contact-details { grid-area: details; }
+.contact-page .contact-form { grid-area: form; }
+
+.contact-intro h1 {
+  margin: 18px 0 14px;
+  max-width: 560px;
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  font-weight: 580;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.contact-intro p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .contact-detail {
   padding: 24px;
   display: grid;
@@ -1185,6 +1218,14 @@ main,
   .hero-proof strong { font-size: 1.15rem; }
   .hero-visual { margin-top: 10px; }
   .section { padding: 78px 0; }
+  .contact-page {
+    padding-top: 130px;
+    grid-template-areas:
+      "intro"
+      "form"
+      "details";
+    grid-template-rows: auto;
+  }
   .section-header { grid-template-columns: 1fr; gap: 20px; }
   .section-header h2 { font-size: 2.65rem; }
   .service-grid,
