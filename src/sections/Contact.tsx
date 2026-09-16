@@ -1,6 +1,39 @@
+import { useState, type FormEvent } from "react";
 import PageIntro from "../components/PageIntro";
 
-const Contact = () => (
+type SubmissionState = "idle" | "sending" | "sent" | "error";
+
+const Contact = () => {
+  const [submissionState, setSubmissionState] = useState<SubmissionState>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setSubmissionState("sending");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(formData.entries())),
+      });
+      const result = await response.json() as { error?: string };
+
+      if (!response.ok) throw new Error(result.error || "Unable to send your message.");
+
+      form.reset();
+      setSubmissionState("sent");
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : "Unable to send your message.");
+      setSubmissionState("error");
+    }
+  };
+
+  return (
     <>
       <PageIntro
         eyebrow="Start a conversation"
@@ -14,20 +47,32 @@ const Contact = () => (
           <div className="contact-detail"><span>Phone</span><a href="tel:+13102591394">+1 310 259 1394</a></div>
           <div className="contact-detail"><span>Best for</span><strong>New products, modernization, AI, and technical strategy</strong></div>
         </div>
-        <form className="contact-form" action="https://formsubmit.co/gschauhan1991@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New contact form message" />
-          <input type="hidden" name="_template" value="table" />
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <div className="field contact-honeypot" aria-hidden="true">
+            <label htmlFor="website">Website</label>
+            <input id="website" name="website" tabIndex={-1} autoComplete="off" />
+          </div>
           <div className="form-row">
             <div className="field"><label htmlFor="name">Name</label><input id="name" name="name" autoComplete="name" maxLength={100} required /></div>
             <div className="field"><label htmlFor="email">Work email</label><input id="email" name="email" type="email" autoComplete="email" inputMode="email" maxLength={254} required /></div>
           </div>
-          <div className="field"><label htmlFor="company">Company</label><input id="company" name="company" autoComplete="organization" maxLength={150} /></div>
-          <div className="field"><label htmlFor="message">What can we help you build?</label><textarea id="message" name="message" minLength={20} maxLength={4000} required /></div>
-          <button className="button button-primary" type="submit">Send message <span aria-hidden="true">↗</span></button>
-          <p className="form-note">Your message will be sent securely to our team.</p>
+          <div className="form-row">
+            <div className="field"><label htmlFor="phone">Phone</label><input id="phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" minLength={7} maxLength={30} required /></div>
+            <div className="field"><label htmlFor="company">Company name</label><input id="company" name="company" autoComplete="organization" maxLength={150} required /></div>
+          </div>
+          <div className="field"><label htmlFor="message">Message</label><textarea id="message" name="message" minLength={20} maxLength={4000} required /></div>
+          <button className="button button-primary" type="submit" disabled={submissionState === "sending"}>
+            {submissionState === "sending" ? "Sending…" : "Send message"} <span aria-hidden="true">↗</span>
+          </button>
+          <p className={`form-note ${submissionState}`} role="status" aria-live="polite">
+            {submissionState === "sent" && "Thanks — your message has been sent."}
+            {submissionState === "error" && errorMessage}
+            {(submissionState === "idle" || submissionState === "sending") && "Your message will be emailed directly to our team."}
+          </p>
         </form>
       </section>
     </>
-);
+  );
+};
 
 export default Contact;

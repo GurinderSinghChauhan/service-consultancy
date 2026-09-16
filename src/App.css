@@ -969,11 +969,31 @@ main,
   resize: vertical;
 }
 
+.contact-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.contact-form .button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+  transform: none;
+}
+
 .form-note {
   margin: 0;
   color: var(--muted);
   font-size: 0.78rem;
 }
+
+.form-note.sent { color: var(--accent); }
+.form-note.error { color: #ff8f8f; }
+
+:root[data-theme="light"] .form-note.error { color: #a52c2c; }
 
 .site-footer {
   margin-top: 70px;

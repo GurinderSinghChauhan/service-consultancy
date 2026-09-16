@@ -12,8 +12,19 @@ npm ci
 npm run dev
 ```
 
-The development server prints its local URL. No environment variables are
-required for the current static site.
+The development server prints its local URL. The contact form uses a Vercel
+Function and requires these server-side environment variables in Vercel:
+
+```bash
+BREVO_API_KEY=xkeysib-...
+CONTACT_FROM_EMAIL=contact@your-verified-domain.com
+CONTACT_FROM_NAME="The Software Consulting"
+CONTACT_TO_EMAIL=team@example.com
+```
+
+`CONTACT_FROM_EMAIL` must be a sender registered and verified in Brevo.
+`CONTACT_FROM_NAME` is optional and defaults to `The Software Consulting`. Use
+`vercel dev` when testing the email function locally.
 
 ## Quality checks
 
@@ -39,9 +50,9 @@ Recommended release flow:
 3. Merge to `main` and verify the production deployment.
 4. Smoke-test `/`, `/services`, `/products`, `/contact`, and an unknown route.
 
-The contact form submits directly to the configured inbox through FormSubmit.
-The recipient must confirm the one-time activation email from FormSubmit before
-messages are delivered. Form submissions are not stored by this website.
+The contact form posts to the same-origin `/api/contact` Vercel Function, which
+validates the submission and sends it to the configured inbox through Brevo.
+The Brevo API key is never exposed to the browser.
 
 ## Semantic versioning
 
