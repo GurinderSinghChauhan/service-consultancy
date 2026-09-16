@@ -1,158 +1,55 @@
-// src/components/Footer.tsx
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/brain-logo.jpeg";
-import theme from "../theme";
 
-const Footer: React.FC = () => {
+const Footer = () => {
+  const { pathname } = useLocation();
+
   return (
-    <footer
-      style={{
-        backgroundColor: theme.colors.background,
-        color: theme.colors.text,
-        padding: "3rem 2rem",
-        borderTop: `1px solid ${theme.colors.secondary}`,
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}
-      >
-        {/* Branding */}
-        <div style={{ flex: "1 1 200px", marginBottom: "1.5rem" }}>
-          <img
-            src={logo}
-            alt="The Software Consulting"
-            style={{ width: "150px", borderRadius: "50%" }}
-          />
-          <p style={{ marginTop: "1rem", fontSize: "0.9rem" }}>
-            Empowering businesses to unlock the full potential of technology.
-          </p>
-        </div>
-
-        {/* Navigation Links */}
-        <div style={{ flex: "1 1 150px", marginBottom: "1.5rem" }}>
-          <h4 style={{ fontWeight: "bold", marginBottom: "1rem" }}>Company</h4>
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            <li>
-              <Link
-                to="/about"
-                style={{ color: theme.colors.text, textDecoration: "none" }}
-              >
-                About Us
-              </Link>
-            </li>
-            {/* <li><Link to="/careers" style={{ color: theme.colors.text, textDecoration: 'none' }}>Careers</Link></li> */}
-            <li>
-              <Link
-                to="/contact"
-                style={{ color: theme.colors.text, textDecoration: "none" }}
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        <div style={{ flex: "1 1 150px", marginBottom: "1.5rem" }}>
-          <h4 style={{ fontWeight: "bold", marginBottom: "1rem" }}>Services</h4>
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            <li>
-              <Link
-                to="/services"
-                style={{ color: theme.colors.text, textDecoration: "none" }}
-              >
-                All Services
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/industries"
-                style={{ color: theme.colors.text, textDecoration: "none" }}
-              >
-                Industries
-              </Link>
-            </li>
-            <li><Link to="/products" style={{ color: theme.colors.text, textDecoration: 'none' }}>Products</Link></li>
-          </ul>
-        </div>
-
-        <div style={{ flex: "1 1 150px", marginBottom: "1.5rem" }}>
-          <h4 style={{ fontWeight: "bold", marginBottom: "1rem" }}>Insights</h4>
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            <li>
-              <Link
-                to="/insights"
-                style={{ color: theme.colors.text, textDecoration: "none" }}
-              >
-                Blogs
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/insights"
-                style={{ color: theme.colors.text, textDecoration: "none" }}
-              >
-                Case Studies
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Social Media */}
-        {/* <div style={{ flex: '1 1 150px', marginBottom: '1.5rem' }}>
-          <h4 style={{ fontWeight: 'bold', marginBottom: '1rem' }}>Connect</h4>
-          <div style={{ display: 'flex', gap: '1rem' }}>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ color: theme.colors.text }}>
-              <FaLinkedin size={20}/>
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{ color: theme.colors.text }}>
-              <FaX size={20}/>
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: theme.colors.text }}>
-              <FaFacebook size={20}/>
-            </a>
+    <footer className="site-footer">
+      <div className="container">
+        {pathname !== "/contact" && (
+          <div className="footer-cta">
+            <div>
+              <span className="eyebrow">Have an ambitious idea?</span>
+              <h2>Let’s make it real.</h2>
+            </div>
+            <Link className="button button-primary" to="/contact">
+              Start a conversation <span aria-hidden="true">↗</span>
+            </Link>
           </div>
-        </div> */}
-      </div>
+        )}
 
-      {/* Legal */}
-      <div
-        style={{
-          borderTop: `1px solid ${theme.colors.secondary}`,
-          marginTop: "2rem",
-          paddingTop: "1rem",
-          textAlign: "center",
-          fontSize: "0.8rem",
-        }}
-      >
-        <p>
-          © {new Date().getFullYear()} The Software Consulting. All rights
-          reserved. <span aria-label={`Application version ${__APP_VERSION__}`}>v{__APP_VERSION__}</span>
-        </p>
-        <p>
-          <Link
-            to="/"
-            style={{
-              color: theme.colors.text,
-              textDecoration: "none",
-              marginRight: "1rem",
-            }}
-          >
-            Privacy Policy
-          </Link>
-          <Link
-            to="/"
-            style={{ color: theme.colors.text, textDecoration: "none" }}
-          >
-            Terms of Service
-          </Link>
-        </p>
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <Link className="brand" to="/">
+              <span className="brand-mark"><img src={logo} alt="" /></span>
+              <span className="brand-copy"><strong>The Software</strong><span>Consulting</span></span>
+            </Link>
+            <p>Strategy, design, and engineering for organizations ready to move forward.</p>
+          </div>
+          <div>
+            <span className="footer-label">Explore</span>
+            <Link to="/services">Services</Link>
+            <Link to="/industries">Industries</Link>
+            <Link to="/products">Products</Link>
+          </div>
+          <div>
+            <span className="footer-label">Company</span>
+            <Link to="/about">About</Link>
+            <Link to="/insights">Insights</Link>
+            <Link to="/contact">Contact</Link>
+          </div>
+          <div>
+            <span className="footer-label">Contact</span>
+            <a href="mailto:gschauhan1991@gmail.com">gschauhan1991@gmail.com</a>
+            <a href="tel:+13102591394">+1 310 259 1394</a>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} The Software Consulting</span>
+          <span>Strategy · Design · Engineering</span>
+        </div>
       </div>
     </footer>
   );

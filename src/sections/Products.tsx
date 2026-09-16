@@ -1,123 +1,31 @@
-import React from "react";
-import theme from "../theme";
-import { motion } from "framer-motion";
 import { productsData } from "../assets/mockData/mockData";
+import PageIntro from "../components/PageIntro";
+import RevealCardBody from "../components/RevealCardBody";
 
-const Products: React.FC = () => {
-  return (
-    <div
-      style={{
-        color: theme.colors.text,
-        minHeight: "100vh",
-        width: "100vw",
-        padding: "4rem 2rem",
-        boxSizing: "border-box",
-        overflowX: "hidden",
-      }}
-    >
-      {/* <ParallaxBackground/> */}
-      <div
-        style={{
-          maxWidth: "1440px",
-          margin: "0 auto",
-        }}
-      >
-        <div style={{ maxWidth: "1440px", margin: "0 auto" }}>
-          <h1
-            style={{
-              fontSize: "2.5rem",
-              textAlign: "center",
-              marginBottom: "3rem",
-            }}
-          >
-            Products
-          </h1>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: "2rem",
-            }}
-          >
-            {productsData.map((project, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                style={{
-                  backgroundColor: theme.colors.card,
-                  // border: `1px solid ${theme.colors.cardBorder}`,
-                  padding: "1.5rem",
-                  borderRadius: "8px",
-                  border: "1px solid rgba(251, 254, 255, 0.71)", // soft bluish border
-                  boxShadow: "0 0 10px rgba(248, 249, 249, 0.69)", // subtle glow
-                  transition: "box-shadow 0.3s ease, transform 0.3s ease",
-                }}
-              >
-                <h3
-                  style={{
-                    color: theme.colors.primary,
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  {project.title}
-                </h3>
-                <p style={{ color: theme.colors.secondary }}>
-                  {project.description}
-                </p>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "0.5rem",
-                    marginTop: "0.75rem",
-                    flexWrap: "wrap",
-                  }}
-                >
-                  {project.tech.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      style={{
-                        backgroundColor: theme.colors.cardBorder,
-                        color: theme.colors.text,
-                        padding: "0.3rem 0.6rem",
-                        borderRadius: "4px",
-                        fontSize: "0.8rem",
-                      }}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                {project.demoUrl && (
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      marginTop: "1.25rem",
-                      padding: "0.65rem 1rem",
-                      borderRadius: "6px",
-                      backgroundColor: theme.colors.primary,
-                      color: theme.colors.background,
-                      fontWeight: 600,
-                      textDecoration: "none",
-                    }}
-                  >
-                    Open live demo
-                  </a>
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
+const Products = () => (
+  <>
+    <PageIntro
+      eyebrow="Products & work"
+      title="Useful technology, shaped around real needs."
+      description="A selection of platforms and product concepts that combine thoughtful experience design with dependable engineering."
+      meta={`${productsData.length} selected projects`}
+    />
+    <section className="section container">
+      <div className="product-grid">
+        {productsData.map((product, index) => (
+          <article className="card reveal-card product-card" key={product.title} tabIndex={0}>
+            <span className="card-index">Project {String(index + 1).padStart(2, "0")}</span>
+            <h3>{product.title}</h3>
+            <RevealCardBody summary={product.description}>
+              <div className="tag-list">
+                {product.tech.map((technology) => <span className="tag" key={technology}>{technology}</span>)}
+              </div>
+            </RevealCardBody>
+          </article>
+        ))}
       </div>
-    </div>
-  );
-};
+    </section>
+  </>
+);
 
 export default Products;

@@ -1,156 +1,50 @@
-// src/screens/Insights.tsx
-import React, { useState } from "react";
-import theme from "../theme";
+import { useMemo, useState } from "react";
 import { insightsData } from "../assets/mockData/mockData";
-import { motion } from "framer-motion";
+import PageIntro from "../components/PageIntro";
+import RevealCardBody from "../components/RevealCardBody";
 
-const categories = ["Blogs", "Case Studies", "News"];
+const categories = ["All", "Blogs", "Case Studies"];
 
-const Insights: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState("Blogs");
-
-  const filteredInsights =
-    activeCategory === "All"
-      ? insightsData
-      : insightsData.filter((item) =>
-          item.title.toLowerCase().includes(activeCategory.toLowerCase())
-        );
+const Insights = () => {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const insights = useMemo(
+    () => activeCategory === "All" ? insightsData : insightsData.filter((item) => item.title === activeCategory),
+    [activeCategory],
+  );
 
   return (
-    <div
-      style={{
-        // backgroundColor: theme.colors.background,
-        color: theme.colors.text,
-        minHeight: "100vh",
-        width: "100vw",
-        padding: "4rem 2rem",
-        boxSizing: "border-box",
-        overflowX: "hidden",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1440px",
-          margin: "0 auto",
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "2.5rem",
-            textAlign: "center",
-            marginBottom: "3rem",
-          }}
-        >
-          Insights
-        </h1>
-
-        {/* Filter Tabs */}
-        <div
-          style={{
-            display: "flex",
-            gap: "1rem",
-            justifyContent: "center",
-            marginBottom: "2rem",
-            flexWrap: "wrap",
-          }}
-        >
-          {categories.map((cat, i) => (
+    <>
+      <PageIntro
+        eyebrow="Insights"
+        title="Ideas for building what comes next."
+        description="Practical perspectives on product, engineering, AI, cloud, and the decisions that shape successful digital businesses."
+        meta="Field notes & case studies"
+      />
+      <section className="section container">
+        <div className="filter-row" aria-label="Filter insights">
+          {categories.map((category) => (
             <button
-              key={i}
-              onClick={() => setActiveCategory(cat)}
-              style={{
-                padding: "0.5rem 1rem",
-                border: "none",
-                borderBottom:
-                  activeCategory === cat
-                    ? `2px solid ${theme.colors.primary}`
-                    : "none",
-                background: "transparent",
-                color: theme.colors.text,
-                fontWeight: "bold",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-              }}
+              type="button"
+              className={activeCategory === category ? "filter-button active" : "filter-button"}
+              aria-pressed={activeCategory === category}
+              onClick={() => setActiveCategory(category)}
+              key={category}
             >
-              {cat}
+              {category}
             </button>
           ))}
         </div>
-
-        {/* Featured Section */}
-        <div style={{ marginBottom: "3rem" }}>
-          {/* <h2
-            style={{
-              fontSize: "1.8rem",
-              fontWeight: "bold",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Featured Insights
-          </h2> */}
+        <div className="insight-grid">
+          {insights.map((insight, index) => (
+            <article className="card reveal-card insight-card" key={`${insight.title}-${insight.description}`} tabIndex={0}>
+              <span className="insight-type">{insight.title} · {String(index + 1).padStart(2, "0")}</span>
+              <h3>{insight.description}</h3>
+              <RevealCardBody summary={insight.content} />
+            </article>
+          ))}
         </div>
-
-        {/* Insights Grid */}
-        <div
-          style={{
-            // display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "2rem",
-          }}
-        >
-          {filteredInsights.length === 0 ? (
-            <p
-              style={{
-                textAlign: "center",
-                marginTop: "2rem",
-                color: theme.colors.secondary,
-              }}
-            >
-              No insights available for this category.
-            </p>
-          ) : (
-            filteredInsights.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                style={{
-                  backgroundColor: theme.colors.card,
-                  padding: "1.5rem",
-                  borderRadius: "8px",
-                  marginBottom: "2rem",
-                  border: "1px solid rgba(249, 249, 249, 0.85)",
-                  boxShadow: "0 0 10px rgba(229, 234, 235, 0.8)",
-                  transition: "box-shadow 0.3s ease, transform 0.3s ease",
-                }}
-              >
-                <h3 style={{ color: theme.colors.primary }}>{item.title}</h3>
-                <p
-                  style={{
-                    color: theme.colors.secondary,
-                    marginTop: "0.75rem",
-                    lineHeight: "1.6",
-                  }}
-                >
-                  {item.description}
-                </p>
-                <p
-                  style={{
-                    color: theme.colors.text,
-                    fontSize: "0.9rem",
-                    marginTop: "0.5rem",
-                  }}
-                >
-                  {item.content}
-                </p>
-              </motion.div>
-            ))
-          )}
-        </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 

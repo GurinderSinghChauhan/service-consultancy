@@ -1,142 +1,73 @@
-// src/screens/Contact.tsx
-import React from "react";
-import theme from "../theme";
-import {
-  FaEnvelope,
-  FaPhone,
-  FaLinkedin,
-  FaTwitter,
-  FaGithub,
-} from "react-icons/fa";
+import { useState, type FormEvent } from "react";
 
-const Contact: React.FC = () => {
+type SubmissionState = "idle" | "sending" | "sent" | "error";
+
+const Contact = () => {
+  const [submissionState, setSubmissionState] = useState<SubmissionState>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setSubmissionState("sending");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(formData.entries())),
+      });
+      const result = await response.json() as { error?: string };
+
+      if (!response.ok) throw new Error(result.error || "Unable to send your message.");
+
+      form.reset();
+      setSubmissionState("sent");
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : "Unable to send your message.");
+      setSubmissionState("error");
+    }
+  };
+
   return (
-    <div
-      style={{
-        color: theme.colors.text,
-        minHeight: "100vh",
-        width: "100vw", // Fixed from 100vw
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "2rem",
-        boxSizing: "border-box", // Prevent padding from pushing content
-        overflowX: "hidden", // Optional: ensure horizontal scroll doesn't appear
-      }}
-    >
-      <div
-        style={{
-          width: "600px",
-          backgroundColor: theme.colors.card,
-          padding: "2rem",
-          borderRadius: "12px",
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-        }}
-      >
-        <h1 style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-          Contact Us
-        </h1>
-
-        <p
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "0.5rem",
-          }}
-        >
-          <FaEnvelope style={{ marginRight: "8px" }} /> gschauhan1991@gmail.com
-        </p>
-        <p
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "1rem",
-          }}
-        >
-          <FaPhone style={{ marginRight: "8px" }} /> +310-259-1394
-        </p>
-
-        <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-          <input
-            type="text"
-            placeholder="Your Name"
-            style={{
-              padding: "0.8rem",
-              borderRadius: "8px",
-              border: "1px solid #ccc",
-              backgroundColor: theme.colors.inputBackground,
-              color: theme.colors.text,
-            }}
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            style={{
-              padding: "0.8rem",
-              borderRadius: "8px",
-              border: "1px solid #ccc",
-              backgroundColor: theme.colors.inputBackground,
-              color: theme.colors.text,
-            }}
-          />
-          <textarea
-            placeholder="Your Message"
-            rows={4}
-            style={{
-              padding: "0.8rem",
-              borderRadius: "8px",
-              border: "1px solid #ccc",
-              backgroundColor: theme.colors.inputBackground,
-              color: theme.colors.text,
-              resize: "none",
-            }}
-          ></textarea>
-          <button
-            type="submit"
-            style={{
-              padding: "0.8rem",
-              borderRadius: "8px",
-              color: "#fff",
-              border: "none",
-            }}
-          >
-            Send Message
-          </button>
-        </form>
-
-        <div
-          style={{
-            marginTop: "2rem",
-            display: "flex",
-            justifyContent: "center",
-            gap: "1.5rem",
-            fontSize: "1.4rem",
-          }}
-        >
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaTwitter />
-          </a>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub />
-          </a>
+      <section className="section container contact-grid contact-page">
+        <div className="contact-intro">
+          <span className="eyebrow">Contact us</span>
+          <h1>Tell us what you’re working on.</h1>
+          <p>Replies within 1–2 business days.</p>
         </div>
-      </div>
-    </div>
+        <div className="contact-details">
+          <div className="contact-detail"><span>Email</span><a href="mailto:gschauhan1991@gmail.com">gschauhan1991@gmail.com</a></div>
+          <div className="contact-detail"><span>Phone</span><a href="tel:+13102591394">+1 310 259 1394</a></div>
+          <div className="contact-detail"><span>Best for</span><strong>New products, modernization, AI, and technical strategy</strong></div>
+        </div>
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <div className="field contact-honeypot" aria-hidden="true">
+            <label htmlFor="website">Website</label>
+            <input id="website" name="website" tabIndex={-1} autoComplete="off" />
+          </div>
+          <div className="form-row">
+            <div className="field"><label htmlFor="name">Name</label><input id="name" name="name" autoComplete="name" maxLength={100} required /></div>
+            <div className="field"><label htmlFor="email">Work email</label><input id="email" name="email" type="email" autoComplete="email" inputMode="email" maxLength={254} required /></div>
+          </div>
+          <div className="form-row">
+            <div className="field"><label htmlFor="phone">Phone</label><input id="phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" minLength={7} maxLength={30} required /></div>
+            <div className="field"><label htmlFor="company">Company name</label><input id="company" name="company" autoComplete="organization" maxLength={150} required /></div>
+          </div>
+          <div className="field"><label htmlFor="message">Message</label><textarea id="message" name="message" minLength={20} maxLength={4000} required /></div>
+          <button className="button button-primary" type="submit" disabled={submissionState === "sending"}>
+            {submissionState === "sending" ? "Sending…" : "Send message"} <span aria-hidden="true">↗</span>
+          </button>
+          <p className={`form-note ${submissionState}`} role="status" aria-live="polite">
+            {submissionState === "sent" && "Thanks — your message has been sent."}
+            {submissionState === "error" && errorMessage}
+            {(submissionState === "idle" || submissionState === "sending") && "Your message will be emailed directly to our team."}
+          </p>
+        </form>
+      </section>
   );
 };
 

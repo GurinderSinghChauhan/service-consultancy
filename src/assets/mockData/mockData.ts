@@ -626,40 +626,15 @@ export const insightsData = [
 
 export const productsData = [
   {
-    title: "Secure Document Intelligence",
+    title: "Arcline Document Intelligence",
     description:
       "Organization-isolated document ingestion and retrieval with role-based access, controlled compute, and source-grounded answers.",
     tech: ["FastAPI", "PostgreSQL", "Qdrant", "Vision AI"],
-    demoUrl: "https://arcline-demo.thesoftwareconsulting.com",
   },
   {
-    title: "E-Commerce App",
+    title: "Velora Service Marketplace",
     description:
-      "A full-stack e-commerce application with payment gateway and admin dashboard.",
-    tech: ["React", "Node.js", "MongoDB"],
-  },
-  {
-    title: "AI Chatbot",
-    description:
-      "A smart chatbot using GPT API integrated with customer support features.",
-    tech: ["Next.js", "OpenAI", "Tailwind"],
-  },
-  {
-    title: "Fitness Tracker",
-    description:
-      "A mobile-friendly fitness app with real-time analytics and user tracking.",
-    tech: ["React Native", "Firebase"],
-  },
-  {
-    title: "Product Showcase Website",
-    description:
-      "A product showcase with GSAP scroll animations and a custom theme toggle.",
-    tech: ["React", "GSAP", "Framer Motion"],
-  },
-  {
-    title: "Project Management Tool",
-    description:
-      "Kanban-style project board with collaboration features and real-time updates.",
-    tech: ["Vue.js", "Supabase"],
+      "A local-services marketplace for discovering trusted professionals, booking live availability, and managing provider operations.",
+    tech: ["React", "FastAPI", "PostgreSQL"],
   },
 ];

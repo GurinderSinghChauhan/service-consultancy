@@ -25,6 +25,7 @@ coverage/
 .cache/
 .tmp/
 tmp/
+all-files.txt
 
 # Editors and operating systems
 .DS_Store

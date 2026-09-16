@@ -1,8 +1,5 @@
 @font-face {
-    font-family: 'graphik';
-    src: url('./GraphikRegular.otf') format('truetype');
-}
-@font-face {
     font-family: 'Satoshi';
     src: url('./Satoshi-Variable.ttf') format('truetype');
+    font-display: swap;
 }
