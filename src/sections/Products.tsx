@@ -1,6 +1,7 @@
 import { productsData } from "../assets/mockData/mockData";
 import PageIntro from "../components/PageIntro";
 import RevealCardBody from "../components/RevealCardBody";
+import { Link } from "react-router-dom";
 
 const Products = () => (
   <>
@@ -13,15 +14,16 @@ const Products = () => (
     <section className="section container">
       <div className="product-grid">
         {productsData.map((product, index) => (
-          <article className="card reveal-card product-card" key={product.title} tabIndex={0}>
+          <Link className="card reveal-card product-card product-card-link" key={product.title} to={`/products/${product.slug}`}>
             <span className="card-index">Project {String(index + 1).padStart(2, "0")}</span>
             <h3>{product.title}</h3>
             <RevealCardBody summary={product.description}>
               <div className="tag-list">
                 {product.tech.map((technology) => <span className="tag" key={technology}>{technology}</span>)}
               </div>
+              <span className="product-card-cta">View product overview <span aria-hidden="true">→</span></span>
             </RevealCardBody>
-          </article>
+          </Link>
         ))}
       </div>
     </section>
