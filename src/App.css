@@ -193,6 +193,7 @@ main,
 .brand-copy span {
   color: var(--muted);
   font-size: 0.78rem;
+  font-weight: 650;
 }
 
 .desktop-nav {
