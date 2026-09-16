@@ -191,8 +191,8 @@ main,
 }
 
 .brand-copy span {
-  color: var(--muted);
-  font-size: 0.78rem;
+  color: var(--text);
+  font-size: 0.94rem;
   font-weight: 650;
 }
 
