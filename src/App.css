@@ -1256,6 +1256,17 @@ main,
   box-shadow: 0 0 0 3px var(--focus-ring-soft);
 }
 
+.phone-field {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.phone-field select {
+  padding-inline: 12px 8px;
+  cursor: pointer;
+}
+
 .field textarea {
   min-height: 150px;
   resize: vertical;
@@ -1508,6 +1519,7 @@ main,
   .about-split,
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .form-row { grid-template-columns: 1fr; }
+  .phone-field { grid-template-columns: 112px minmax(0, 1fr); }
   .footer-cta { padding: 68px 0; align-items: flex-start; flex-direction: column; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
