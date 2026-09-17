@@ -18,6 +18,9 @@ const countryCodes = [
   { country: "United Arab Emirates", code: "+971", short: "AE" },
 ];
 
+const countryFlag = (countryCode: string) =>
+  String.fromCodePoint(...[...countryCode].map((letter) => 127397 + letter.charCodeAt(0)));
+
 const Contact = () => {
   const [submissionState, setSubmissionState] = useState<SubmissionState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -80,7 +83,9 @@ const Contact = () => {
               <div className="phone-field">
                 <select name="countryCode" aria-label="Country calling code" defaultValue="+1">
                   {countryCodes.map(({ country, code, short }) => (
-                    <option key={`${short}-${code}`} value={code} title={country}>{short} {code}</option>
+                    <option key={`${short}-${code}`} value={code} aria-label={`${country} ${code}`}>
+                      {countryFlag(short)} {code}
+                    </option>
                   ))}
                 </select>
                 <input id="phone" name="phone" type="tel" autoComplete="tel-national" inputMode="tel" minLength={7} maxLength={24} placeholder="Phone number" aria-label="Phone number" required />
