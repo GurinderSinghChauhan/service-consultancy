@@ -77,9 +77,6 @@ const ProductDetail = () => {
         <div className="container">
           <div className="section-header">
             <div><span className="eyebrow">The experience</span><h2>From first step to useful outcome.</h2></div>
-            <div className="tag-list product-tech-list">
-              {product.technologies.map((technology) => <span className="tag" key={technology}>{technology}</span>)}
-            </div>
           </div>
           <div className="product-workflow">
             {product.workflow.map((step, index) => (

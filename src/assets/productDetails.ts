@@ -5,7 +5,6 @@ export type ProductDetail = {
   statement: string;
   description: string;
   audience: string;
-  technologies: string[];
   highlights: Array<{ title: string; description: string }>;
   workflow: Array<{ title: string; description: string }>;
   principles: string[];
@@ -20,7 +19,6 @@ export const productDetails: Record<ProductDetail["slug"], ProductDetail> = {
     description:
       "Arcline is a self-hosted document intelligence platform for teams working with sensitive, high-value information. It brings ingestion, structured extraction, permission-aware retrieval, and source-grounded Q&A into one controlled environment.",
     audience: "Built for regulated and document-heavy teams in healthcare, legal, financial, and operational settings.",
-    technologies: ["FastAPI", "PostgreSQL", "Qdrant", "MinerU", "Local AI"],
     highlights: [
       {
         title: "Understand complex files",
@@ -63,7 +61,6 @@ export const productDetails: Record<ProductDetail["slug"], ProductDetail> = {
     description:
       "Velora connects customers with local service businesses through focused discovery, real availability, and a clear booking experience. Behind the marketplace, providers get practical tools for managing services, schedules, and incoming appointments.",
     audience: "Designed for customers who value convenience and independent service businesses that need simpler day-to-day operations.",
-    technologies: ["React", "TypeScript", "FastAPI", "PostgreSQL"],
     highlights: [
       {
         title: "Relevant local discovery",

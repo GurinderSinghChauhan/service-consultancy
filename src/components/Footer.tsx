@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
           <div>
             <span className="footer-label">Contact</span>
-            <a href="mailto:gschauhan1991@gmail.com">gschauhan1991@gmail.com</a>
+            <a href="mailto:info@thesoftwareconsulting.com">info@thesoftwareconsulting.com</a>
             <a href="tel:+13102591394">+1 310 259 1394</a>
           </div>
         </div>

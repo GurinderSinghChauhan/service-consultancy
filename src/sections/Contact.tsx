@@ -40,7 +40,7 @@ const Contact = () => {
           <p>Replies within 1–2 business days.</p>
         </div>
         <div className="contact-details">
-          <div className="contact-detail"><span>Email</span><a href="mailto:gschauhan1991@gmail.com">gschauhan1991@gmail.com</a></div>
+          <div className="contact-detail"><span>Email</span><a href="mailto:info@thesoftwareconsulting.com">info@thesoftwareconsulting.com</a></div>
           <div className="contact-detail"><span>Phone</span><a href="tel:+13102591394">+1 310 259 1394</a></div>
           <div className="contact-detail"><span>Best for</span><strong>New products, modernization, AI, and technical strategy</strong></div>
         </div>

@@ -1084,12 +1084,6 @@ main,
   background: var(--footer-bg);
 }
 
-.product-tech-list {
-  max-width: 420px;
-  margin: 0;
-  align-self: end;
-}
-
 .product-workflow {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1534,7 +1528,6 @@ main,
   .product-feature-grid { grid-template-columns: 1fr; }
   .product-feature { min-height: 250px; }
   .product-feature h3 { margin-top: 58px; }
-  .product-tech-list { margin-top: 8px; }
   .product-workflow { grid-template-columns: 1fr; }
   .product-workflow article { min-height: 250px; border-right: 0; border-bottom: 1px solid var(--line); }
   .product-workflow article:last-child { border-bottom: 0; }
