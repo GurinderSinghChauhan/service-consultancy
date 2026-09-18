@@ -1256,16 +1256,38 @@ main,
   box-shadow: 0 0 0 3px var(--focus-ring-soft);
 }
 
-.phone-field {
-  display: grid;
-  grid-template-columns: 108px minmax(0, 1fr);
+.phone-input {
+  --PhoneInputCountryFlag-height: 18px;
+  --PhoneInputCountryFlag-borderColor: var(--line-strong);
+  --PhoneInputCountrySelectArrow-color: var(--muted);
+  --PhoneInputCountrySelectArrow-opacity: 1;
   gap: 8px;
 }
 
-.phone-field select {
-  padding-inline: 12px 8px;
-  cursor: pointer;
+.phone-input .PhoneInputCountry {
+  min-width: 92px;
+  margin: 0;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--field-bg);
 }
+
+.phone-input .PhoneInputCountry:focus-within {
+  border-color: var(--focus-ring);
+  box-shadow: 0 0 0 3px var(--focus-ring-soft);
+}
+
+.phone-input .PhoneInputCountryIcon {
+  width: 26px;
+  box-shadow: none;
+}
+
+.phone-input .PhoneInputCountryIconImg { border-radius: 3px; }
+
+.phone-input .PhoneInputCountrySelect { cursor: pointer; }
+
+.phone-input .PhoneInputInput { min-width: 0; }
 
 .field textarea {
   min-height: 150px;
@@ -1519,7 +1541,6 @@ main,
   .about-split,
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .form-row { grid-template-columns: 1fr; }
-  .phone-field { grid-template-columns: 112px minmax(0, 1fr); }
   .footer-cta { padding: 68px 0; align-items: flex-start; flex-direction: column; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }

@@ -1,39 +1,19 @@
 import { useState, type FormEvent } from "react";
+import PhoneInput, { type Value } from "react-phone-number-input";
+import phoneFlags from "react-phone-number-input/flags";
+import "react-phone-number-input/style.css";
 
 type SubmissionState = "idle" | "sending" | "sent" | "error";
-
-const countryCodes = [
-  { country: "United States", code: "+1", short: "US" },
-  { country: "Canada", code: "+1", short: "CA" },
-  { country: "India", code: "+91", short: "IN" },
-  { country: "United Kingdom", code: "+44", short: "GB" },
-  { country: "Australia", code: "+61", short: "AU" },
-  { country: "Germany", code: "+49", short: "DE" },
-  { country: "France", code: "+33", short: "FR" },
-  { country: "Ireland", code: "+353", short: "IE" },
-  { country: "Italy", code: "+39", short: "IT" },
-  { country: "Netherlands", code: "+31", short: "NL" },
-  { country: "New Zealand", code: "+64", short: "NZ" },
-  { country: "Singapore", code: "+65", short: "SG" },
-  { country: "United Arab Emirates", code: "+971", short: "AE" },
-];
-
-const countryFlag = (countryCode: string) =>
-  String.fromCodePoint(...[...countryCode].map((letter) => 127397 + letter.charCodeAt(0)));
 
 const Contact = () => {
   const [submissionState, setSubmissionState] = useState<SubmissionState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState<Value>();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const countryCode = String(formData.get("countryCode") || "+1");
-    const localPhone = String(formData.get("phone") || "").trim();
-    const payload = Object.fromEntries(formData.entries());
-    payload.phone = `${countryCode} ${localPhone}`;
-    delete payload.countryCode;
 
     setSubmissionState("sending");
     setErrorMessage("");
@@ -42,13 +22,14 @@ const Contact = () => {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(Object.fromEntries(formData.entries())),
       });
       const result = await response.json() as { error?: string };
 
       if (!response.ok) throw new Error(result.error || "Unable to send your message.");
 
       form.reset();
+      setPhoneNumber(undefined);
       setSubmissionState("sent");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Unable to send your message.");
@@ -80,16 +61,22 @@ const Contact = () => {
           <div className="form-row">
             <div className="field">
               <label htmlFor="phone">Phone</label>
-              <div className="phone-field">
-                <select name="countryCode" aria-label="Country calling code" defaultValue="+1">
-                  {countryCodes.map(({ country, code, short }) => (
-                    <option key={`${short}-${code}`} value={code} aria-label={`${country} ${code}`}>
-                      {countryFlag(short)} {code}
-                    </option>
-                  ))}
-                </select>
-                <input id="phone" name="phone" type="tel" autoComplete="tel-national" inputMode="tel" minLength={7} maxLength={24} placeholder="Phone number" aria-label="Phone number" required />
-              </div>
+              <PhoneInput
+                id="phone"
+                className="phone-input"
+                name="phone"
+                value={phoneNumber}
+                onChange={setPhoneNumber}
+                defaultCountry="US"
+                flags={phoneFlags}
+                international
+                countryCallingCodeEditable={false}
+                limitMaxLength
+                placeholder="Phone number"
+                autoComplete="tel"
+                aria-label="Phone number"
+                required
+              />
             </div>
             <div className="field"><label htmlFor="company">Company name</label><input id="company" name="company" autoComplete="organization" maxLength={150} required /></div>
           </div>
