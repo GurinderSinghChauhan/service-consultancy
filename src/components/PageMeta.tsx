@@ -11,6 +11,8 @@ const metadata: Record<string, { title: string; description: string }> = {
   "/industries": { title: "Industries", description: "Technology consulting grounded in the operating realities of automotive, banking, healthcare, retail, and more." },
   "/insights": { title: "Insights", description: "Practical perspectives on product, engineering, AI, cloud, and digital business." },
   "/products": { title: "Products & Work", description: "Explore selected digital products shaped around real customer and business needs." },
+  "/products/arcline": { title: "Arcline Document Intelligence", description: "Explore Arcline, a private document intelligence platform for secure ingestion, retrieval, and source-grounded answers." },
+  "/products/velora": { title: "Velora Service Marketplace", description: "Explore Velora, a local-services marketplace for discovery, live availability, booking, and provider operations." },
   "/services": { title: "Services", description: "Product strategy, experience design, software engineering, cloud, data, AI, security, and modernization capabilities." },
 };
 
