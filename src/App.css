@@ -1265,9 +1265,9 @@ main,
 }
 
 .phone-input .PhoneInputCountry {
-  min-width: 92px;
+  min-width: 78px;
   margin: 0;
-  padding: 0 14px;
+  padding: 0 10px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--field-bg);
@@ -1279,7 +1279,7 @@ main,
 }
 
 .phone-input .PhoneInputCountryIcon {
-  width: 26px;
+  width: 24px;
   box-shadow: none;
 }
 
