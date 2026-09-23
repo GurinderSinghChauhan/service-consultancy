@@ -42,7 +42,6 @@ const Contact = () => {
         <div className="contact-intro">
           <span className="eyebrow">Contact us</span>
           <h1>Tell us what you’re working on.</h1>
-          <p>Replies within 1–2 business days.</p>
         </div>
         <div className="contact-details">
           <div className="contact-detail"><span>Email</span><a href="mailto:info@thesoftwareconsulting.com">info@thesoftwareconsulting.com</a></div>
