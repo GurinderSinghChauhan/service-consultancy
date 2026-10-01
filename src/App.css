@@ -1111,26 +1111,10 @@ main,
   text-transform: uppercase;
 }
 
-.about-split,
 .contact-grid {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
   gap: clamp(50px, 10vw, 130px);
-}
-
-.about-statement {
-  margin: 0;
-  max-width: 800px;
-  font-size: clamp(2rem, 4.2vw, 4rem);
-  line-height: 1.13;
-  letter-spacing: -0.045em;
-}
-
-.about-copy p {
-  margin: 0 0 22px;
-  color: var(--muted);
-  font-size: 1.08rem;
-  line-height: 1.75;
 }
 
 .founder-section {
@@ -1616,7 +1600,6 @@ main,
   .page-intro { min-height: 540px; padding-top: 150px; display: grid; align-content: end; }
   .page-intro h1 { font-size: clamp(3.2rem, 16vw, 5rem); }
   .page-meta { display: none; }
-  .about-split,
   .contact-grid,
   .founder-grid { grid-template-columns: 1fr; gap: 40px; }
   .founder-profile { position: static; }

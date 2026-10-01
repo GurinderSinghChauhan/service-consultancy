@@ -1,4 +1,3 @@
-import PageIntro from "../components/PageIntro";
 import RevealCardBody from "../components/RevealCardBody";
 
 const values = [
@@ -9,20 +8,6 @@ const values = [
 
 const About = () => (
   <>
-    <PageIntro
-      eyebrow="About us"
-      title="Small by design. Senior by default."
-      description="We are a technology consultancy built for close collaboration, clear thinking, and high-accountability delivery."
-      meta="Strategy · Design · Engineering"
-    />
-    <section className="section container about-split">
-      <div><span className="eyebrow">Our point of view</span></div>
-      <div className="about-copy">
-        <p className="about-statement">Great software is a business advantage, not just a technical achievement.</p>
-        <p>We work alongside founders, operators, and technology leaders to translate ambition into systems people trust and enjoy using.</p>
-        <p>Our model stays intentionally direct: experienced people close to the work, short feedback loops, and decisions made with the full product lifecycle in view.</p>
-      </div>
-    </section>
     <section className="section founder-section">
       <div className="container founder-grid">
         <header className="founder-profile">
