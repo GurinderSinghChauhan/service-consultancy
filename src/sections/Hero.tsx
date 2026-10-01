@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { industriesData, services } from "../assets/mockData/mockData";
+import { industriesData } from "../assets/mockData/mockData";
+import { services } from "../assets/services";
 import RevealCardBody from "../components/RevealCardBody";
 
 const process = [

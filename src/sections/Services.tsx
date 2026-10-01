@@ -1,4 +1,4 @@
-import { services } from "../assets/mockData/mockData";
+import { services } from "../assets/services";
 import PageIntro from "../components/PageIntro";
 import RevealCardBody from "../components/RevealCardBody";
 
