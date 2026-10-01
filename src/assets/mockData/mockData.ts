@@ -633,7 +633,7 @@ export const productsData = [
   },
   {
     slug: "velora",
-    title: "Velora Service Marketplace",
+    title: "Velora Booking App",
     description:
       "A local-services marketplace for discovering trusted professionals, booking live availability, and managing provider operations.",
   },
