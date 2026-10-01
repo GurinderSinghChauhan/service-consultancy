@@ -1133,6 +1133,84 @@ main,
   line-height: 1.75;
 }
 
+.founder-section {
+  border-block: 1px solid var(--line);
+  background: var(--footer-bg);
+}
+
+.founder-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(50px, 9vw, 120px);
+}
+
+.founder-profile {
+  align-self: start;
+  position: sticky;
+  top: 120px;
+}
+
+.founder-monogram {
+  width: 104px;
+  height: 104px;
+  margin: 34px 0 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--accent-line);
+  border-radius: 28px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  font-size: 2rem;
+  font-weight: 650;
+  letter-spacing: -0.06em;
+}
+
+.founder-profile h2 {
+  margin: 0;
+  max-width: 390px;
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  font-weight: 560;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+
+.founder-profile p {
+  margin: 18px 0 0;
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.founder-story {
+  max-width: 760px;
+}
+
+.founder-story p {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 1.06rem;
+  line-height: 1.78;
+}
+
+.founder-story .founder-lead {
+  color: var(--text);
+  font-size: clamp(1.45rem, 2.3vw, 2rem);
+  line-height: 1.45;
+  letter-spacing: -0.025em;
+}
+
+.founder-story .founder-closing {
+  margin: 46px 0 0;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+  color: var(--text);
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+  font-weight: 560;
+  line-height: 1.45;
+  letter-spacing: -0.025em;
+}
+
 .value-card {
   min-height: 300px;
 }
@@ -1539,7 +1617,10 @@ main,
   .page-intro h1 { font-size: clamp(3.2rem, 16vw, 5rem); }
   .page-meta { display: none; }
   .about-split,
-  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-grid,
+  .founder-grid { grid-template-columns: 1fr; gap: 40px; }
+  .founder-profile { position: static; }
+  .founder-monogram { width: 84px; height: 84px; margin: 28px 0 24px; border-radius: 22px; }
   .form-row { grid-template-columns: 1fr; }
   .footer-cta { padding: 68px 0; align-items: flex-start; flex-direction: column; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
