@@ -1,9 +1,31 @@
 import RevealCardBody from "../components/RevealCardBody";
 
 const values = [
-  { icon: "01", title: "Think in outcomes", copy: "We anchor decisions in the change they need to create—not deliverables for their own sake." },
-  { icon: "02", title: "Make complexity clear", copy: "The best solutions feel simple because the hard thinking happened before implementation." },
-  { icon: "03", title: "Build for the long run", copy: "Quality, security, maintainability, and knowledge transfer are part of the product from day one." },
+  {
+    icon: "B",
+    title: "Business First",
+    copy: "Technology should always serve a real business purpose. We focus on solutions that create measurable value, improve operations, support growth, and solve meaningful problems.",
+  },
+  {
+    icon: "U",
+    title: "Understand Before Building",
+    copy: "We listen before we recommend. By understanding your business, goals, challenges, customers, and existing systems, we can design solutions that truly fit your needs.",
+  },
+  {
+    icon: "I",
+    title: "Integrity Always",
+    copy: "We believe in honest advice and transparent relationships. We recommend what is right for the client — even when that means choosing a simpler solution, using an existing tool, or doing less work ourselves.",
+  },
+  {
+    icon: "L",
+    title: "Long-Term Thinking",
+    copy: "We build with the future in mind. Our goal is to create secure, scalable, maintainable solutions that continue to support your business as it grows, rather than quick fixes that become tomorrow’s problems.",
+  },
+  {
+    icon: "D",
+    title: "Deliver What We Promise",
+    copy: "We take ownership of our commitments. From the first conversation through final delivery and beyond, we believe in clear communication, accountability, quality, and doing what we say we will do.",
+  },
 ];
 
 const About = () => (
@@ -32,8 +54,8 @@ const About = () => (
     </section>
     <section className="section container">
       <div className="section-header">
-        <div><span className="eyebrow">Our principles</span><h2>How we show up.</h2></div>
-        <p>Good partnerships are built on transparency, curiosity, and a shared standard for excellent work.</p>
+        <div><span className="eyebrow">Our Values</span><h2>BUILD</h2></div>
+        <p>At The Software Consulting, we believe great technology starts with the right principles. Our work is guided by BUILD — a simple framework that reflects how we approach every client, project, and partnership.</p>
       </div>
       <div className="value-grid">
         {values.map((value) => (
@@ -44,6 +66,7 @@ const About = () => (
           </article>
         ))}
       </div>
+      <p className="values-closing">We do not believe in selling technology for the sake of technology. We believe in building the right solution for the right business problem.</p>
     </section>
   </>
 );
