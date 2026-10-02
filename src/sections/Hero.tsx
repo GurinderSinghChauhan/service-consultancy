@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { industriesData } from "../assets/mockData/mockData";
+import { industries } from "../assets/industries";
 import { services } from "../assets/services";
 import RevealCardBody from "../components/RevealCardBody";
 
@@ -43,7 +43,7 @@ const Hero = () => (
 
     <div className="industry-strip" aria-label="Selected industries">
       <div className="container industry-list">
-        {industriesData.slice(0, 6).map((industry) => <span key={industry.name}>{industry.name}</span>)}
+        {industries.slice(0, 6).map((industry) => <span key={industry.name}>{industry.name}</span>)}
       </div>
     </div>
 
