@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { industriesData, services } from "../assets/mockData/mockData";
 import RevealCardBody from "../components/RevealCardBody";
+import SiteImage from "../components/SiteImage";
 
 const process = [
   { title: "Discover", copy: "Align on the opportunity, constraints, users, and measurable outcomes." },
@@ -30,13 +31,20 @@ const Hero = () => (
           </div>
         </div>
 
-        <div className="hero-visual reveal" aria-hidden="true">
-          <div className="visual-orbit" />
-          <div className="visual-core"><span>01</span></div>
-          <span className="orbit-label one">Product strategy</span>
-          <span className="orbit-label two">AI + engineering</span>
-          <span className="orbit-label three">Built to scale</span>
-        </div>
+        <figure className="hero-visual reveal">
+          <SiteImage
+            image="collaboration"
+            alt="Developers collaborating around a shared table with laptops."
+            sizes="(max-width: 680px) calc(100vw - 28px), (max-width: 980px) 520px, 470px"
+            priority
+          />
+          <span className="photo-kicker" aria-hidden="true">Ideas into impact ↗</span>
+          <figcaption className="hero-photo-caption">
+            <span>Connected thinking. Better outcomes.</span>
+            <strong>Great work starts<br />with collaboration.</strong>
+            <span className="photo-disciplines">Strategy <span>·</span> Design <span>·</span> Engineering</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 

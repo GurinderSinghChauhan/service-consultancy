@@ -1,6 +1,7 @@
 import { services } from "../assets/mockData/mockData";
 import PageIntro from "../components/PageIntro";
 import RevealCardBody from "../components/RevealCardBody";
+import SiteImage from "../components/SiteImage";
 
 const Services = () => (
   <>
@@ -11,6 +12,17 @@ const Services = () => (
       meta={`${services.length} capabilities`}
     />
     <section className="section container">
+      <figure className="editorial-photo services-photo">
+        <SiteImage
+          image="engineering"
+          alt="A software development workspace with code open on a laptop."
+          sizes="(max-width: 680px) calc(100vw - 28px), (max-width: 1220px) calc(100vw - 40px), 1180px"
+        />
+        <figcaption>
+          <span>From strategy to shipping</span>
+          <strong>Thoughtful engineering.<br />Built around your business.</strong>
+        </figcaption>
+      </figure>
       <div className="service-grid">
         {services.map((service, index) => (
           <article className="card reveal-card service-card" key={service.title} tabIndex={0}>

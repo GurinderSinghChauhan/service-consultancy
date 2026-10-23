@@ -1,5 +1,6 @@
 import PageIntro from "../components/PageIntro";
 import RevealCardBody from "../components/RevealCardBody";
+import SiteImage from "../components/SiteImage";
 
 const values = [
   { icon: "01", title: "Think in outcomes", copy: "We anchor decisions in the change they need to create—not deliverables for their own sake." },
@@ -16,7 +17,17 @@ const About = () => (
       meta="Strategy · Design · Engineering"
     />
     <section className="section container about-split">
-      <div><span className="eyebrow">Our point of view</span></div>
+      <div className="about-photo-column">
+        <span className="eyebrow">Our point of view</span>
+        <figure className="editorial-photo about-photo">
+          <SiteImage
+            image="workspace"
+            alt="A sunlit contemporary workspace with a shared meeting table."
+            sizes="(max-width: 680px) calc(100vw - 28px), 460px"
+          />
+          <figcaption>Space for clear thinking.</figcaption>
+        </figure>
+      </div>
       <div className="about-copy">
         <p className="about-statement">Great software is a business advantage, not just a technical achievement.</p>
         <p>We work alongside founders, operators, and technology leaders to translate ambition into systems people trust and enjoy using.</p>
