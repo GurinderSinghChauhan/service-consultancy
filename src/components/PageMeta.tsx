@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { blogPosts } from "../content/blogPosts";
 
 const siteName = "The Software Consulting";
 const defaultDescription = "Senior product strategy, design, and engineering for ambitious digital businesses.";
@@ -24,7 +25,9 @@ const PageMeta = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const page = metadata[pathname] ?? {
+    const normalizedPath = pathname.replace(/\/$/, "") || "/";
+    const post = blogPosts.find((post) => normalizedPath === `/insights/${post.slug}`);
+    const page = post ?? metadata[normalizedPath] ?? {
       title: "Page Not Found",
       description: defaultDescription,
     };
@@ -36,6 +39,7 @@ const PageMeta = () => {
     setMetaContent('meta[property="og:description"]', page.description);
     setMetaContent('meta[name="twitter:title"]', title);
     setMetaContent('meta[name="twitter:description"]', page.description);
+    setMetaContent('meta[property="og:type"]', post ? "article" : "website");
   }, [pathname]);
 
   return null;

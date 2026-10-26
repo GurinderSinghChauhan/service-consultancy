@@ -559,38 +559,6 @@ export const aboutData: {
 ];
 
 export const insightsData = [
-  // Blogs
-  {
-    title: "Blogs",
-    description: "The rise of AI in enterprise decision-making.",
-    content:
-      "Artificial Intelligence is no longer a futuristic concept—it's a present-day reality that's reshaping how enterprises make decisions. From predictive analytics to intelligent automation, AI is helping businesses reduce operational costs, improve accuracy, and unlock growth opportunities.",
-  },
-  {
-    title: "Blogs",
-    description: "Cloud-native strategies for modern app development.",
-    content:
-      "Cloud-native technologies empower development teams to build scalable, fault-tolerant systems. With Kubernetes, microservices, and CI/CD pipelines, businesses can deploy faster, respond to customer needs quickly, and stay ahead in competitive markets.",
-  },
-  {
-    title: "Blogs",
-    description: "Human-centered UX design in digital products.",
-    content:
-      "User experience goes beyond aesthetics. Human-centered design focuses on solving real user problems through empathy, research, and iterative design. It leads to more engaged users and better product adoption.",
-  },
-  {
-    title: "Blogs",
-    description: "Leveraging data lakes for business intelligence.",
-    content:
-      "Data lakes allow enterprises to store structured and unstructured data at scale. When paired with modern BI tools, they unlock deep insights and support data-driven decision-making across departments.",
-  },
-  {
-    title: "Blogs",
-    description: "Cybersecurity trends shaping 2025.",
-    content:
-      "From zero trust architecture to AI-powered threat detection, the cybersecurity landscape is evolving rapidly. Enterprises must stay vigilant and proactive to safeguard digital assets and customer trust.",
-  },
-
   // Case Studies
   {
     title: "Case Studies",
