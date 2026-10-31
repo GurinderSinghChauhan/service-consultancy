@@ -723,41 +723,6 @@ main,
   line-height: 1.6;
 }
 
-.animals-section { padding-top: 40px; }
-
-.animals-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.animal-card {
-  min-height: 190px;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--card-bg);
-}
-
-.animal-symbol {
-  width: 92px;
-  height: 92px;
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--accent-soft);
-  font-size: 3.4rem;
-}
-
-.animal-bear .animal-symbol { background: rgba(255, 202, 128, 0.12); }
-.animal-owl .animal-symbol { background: rgba(131, 184, 255, 0.12); }
-.animal-card h3 { margin: 0 0 6px; font-size: 1.25rem; }
-.animal-card p { margin: 0; color: var(--muted); font-size: 0.9rem; }
-
 .page-intro {
   min-height: 620px;
   padding-top: 190px;
@@ -1689,8 +1654,6 @@ main,
   .insight-grid,
   .value-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
-  .animals-grid { grid-template-columns: 1fr; }
-  .animal-card { min-height: 150px; }
   .process-step,
   .process-step:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); }
   .process-step:last-child { border-bottom: 0; }
