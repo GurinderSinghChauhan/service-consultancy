@@ -10,6 +10,12 @@ const process = [
   { title: "Evolve", copy: "Measure real-world performance, learn quickly, and scale what creates value." },
 ];
 
+const animals = [
+  { name: "Fox", detail: "Curious by nature", symbol: "🦊", tone: "fox" },
+  { name: "Bear", detail: "Calm and steady", symbol: "🐻", tone: "bear" },
+  { name: "Owl", detail: "Always observing", symbol: "🦉", tone: "owl" },
+];
+
 const Hero = () => (
   <>
     <section className="hero">
@@ -95,6 +101,21 @@ const Hero = () => (
             <span>0{index + 1}</span>
             <h3>{step.title}</h3>
             <p>{step.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section className="section container animals-section" aria-labelledby="animals-heading">
+      <div className="section-header">
+        <div><span className="eyebrow">A little extra character</span><h2 id="animals-heading">Meet a few friendly faces.</h2></div>
+        <p>A curious fox, a steady bear, and a thoughtful owl bring a little warmth to the page.</p>
+      </div>
+      <div className="animals-grid">
+        {animals.map((animal) => (
+          <article className={`animal-card animal-${animal.tone}`} key={animal.name}>
+            <span className="animal-symbol" role="img" aria-label={animal.name}>{animal.symbol}</span>
+            <div><h3>{animal.name}</h3><p>{animal.detail}</p></div>
           </article>
         ))}
       </div>
